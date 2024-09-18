@@ -72,4 +72,3 @@ Si deseas contribuir a este proyecto, por favor abre un issue o envía un pull r
 ---
 
 ¡Gracias por usar este proyecto! Si tienes alguna pregunta, no dudes en contactarme.
-```
