@@ -2,7 +2,7 @@ import requests
 import json
 from login import login
 from data_batery_info_chart import get_data_batery_info_chart
-from data_discarging import get_data_discharging
+from data_discharging import get_data_discharging
 from data_energy_area_chart import get_data_energy_area_chart
 from data_energy_bar_chart import get_data_energy_chart
 from data_photovoltaic_device import get_data_photovoltaic_device
