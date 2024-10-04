@@ -9,7 +9,7 @@ def get_data_plant(session: requests, loginUrl: str) -> json:
     Returns:
         json: the api response with the storage energy day chart 
     """
-    url = 'https://server.growatt.com/panel/storage/getPlantData?plantId=2613959'
+    url = 'https://server.growatt.com/panel/getPlantData?plantId=2613959'
 
     payload = {
         "date": "2024-10-02",
@@ -27,6 +27,6 @@ def get_data_plant(session: requests, loginUrl: str) -> json:
         try:
             return json.loads(response.text)
         except ValueError as e:
-            print(f"Deserealization - ERROR on discharging data [ERROR : {e}]")
+            print(f"Deserealization - ERROR on plant data [ERROR : {e}]")
     else:
-        print(f"RESPONSE ERROR on discharging data request [RESPONSE CODE : {response.status_code}]")
+        print(f"RESPONSE ERROR on plant data request [RESPONSE CODE : {response.status_code}]")
