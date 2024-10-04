@@ -14,8 +14,7 @@ def get_data_discharging(session: requests, loginUrl: str) -> json:
     payload = {
         "date": "2024-10-02",
         "plantId": "2613959",
-        "storageSn": "JNK1CHE00V",
-        "storageSn":"JNK1CHE00V"
+        "storageSn": "JNK1CHE00V"
     }
 
     response = session.post(
