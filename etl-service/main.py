@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 import requests
 import json
 from src.scripts.extract.login import login
@@ -23,25 +25,54 @@ photovoltaic_device = get_data_photovoltaic_device(session=session, loginUrl=log
 wheater = get_data_wheater(session=session, loginUrl=loginUrl)
 plant = get_data_plant(session=session, loginUrl=loginUrl)
 
-# Writing to .json files
+# Define the base directory (e.g., the directory of the current script)
+base_dir = Path(__file__).resolve().parent
 
-with open("./data/raw/batery_info.json", "w") as outfile:
+# Define the data directory relative to the base directory
+data_dir = base_dir / 'data' / 'raw'
+
+# Ensure the directory exists
+data_dir.mkdir(parents=True, exist_ok=True)
+
+# Define the path to the batery_info JSON file
+file_path = data_dir / 'batery_info.json'
+
+
+with file_path.open("w") as outfile:
     outfile.write(json.dumps(batery_info))
 
-with open("./data/raw/discharging.json", "w") as outfile:
+# Define the path to the discharging JSON file
+file_path = data_dir / 'discharging.json'
+
+with file_path.open("w") as outfile:
     outfile.write(json.dumps(discharging))
 
-with open("./data/raw/energy_area_chart.json", "w") as outfile:
+# Define the path to the energy_area_chart JSON file
+file_path = data_dir / 'energy_area_chart.json'
+
+with file_path.open("w") as outfile:
     outfile.write(json.dumps(energy_area_chart))
 
-with open("./data/raw/energy_bar_chart.json", "w") as outfile:
+# Define the path to the energy_bar_chart JSON file
+file_path = data_dir / 'energy_bar_chart.json'
+
+with file_path.open("w") as outfile:
     outfile.write(json.dumps(energy_bar_chart))
 
-with open("./data/raw/photovoltaic_device.json", "w") as outfile:
+# Define the path to the photovoltaic_device JSON file
+file_path = data_dir / 'photovoltaic_device.json'
+
+with file_path.open("w") as outfile:
     outfile.write(json.dumps(photovoltaic_device))
 
-with open("./data/raw/wheater.json", "w") as outfile:
+# Define the path to the wheater JSON file
+file_path = data_dir / 'wheater.json'
+
+with file_path.open("w") as outfile:
     outfile.write(json.dumps(wheater))
 
-with open("./data/raw/plant.json", "w") as outfile:
+# Define the path to the plant JSON file
+file_path = data_dir / 'plant.json'
+
+with file_path.open("w") as outfile:
     outfile.write(json.dumps(plant))
