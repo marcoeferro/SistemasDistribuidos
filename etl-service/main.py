@@ -39,40 +39,55 @@ file_path = data_dir / 'batery_info.json'
 
 
 with file_path.open("w") as outfile:
-    outfile.write(json.dumps(batery_info))
-
+    if(batery_info!=None):
+        outfile.write(json.dumps(batery_info))
+    else:
+        print("ERROR the batery_info data is NULL")
 # Define the path to the discharging JSON file
 file_path = data_dir / 'discharging.json'
 
 with file_path.open("w") as outfile:
-    outfile.write(json.dumps(discharging))
-
+    if(discharging!=None):
+        outfile.write(json.dumps(discharging))
+    else:
+        print("ERROR the discharging data is NULL")
 # Define the path to the energy_area_chart JSON file
 file_path = data_dir / 'energy_area_chart.json'
 
 with file_path.open("w") as outfile:
-    outfile.write(json.dumps(energy_area_chart))
-
+    if(energy_area_chart!=None):
+        outfile.write(json.dumps(energy_area_chart))
+    else:
+        print("ERROR the energy_area_chart data is NULL")
 # Define the path to the energy_bar_chart JSON file
 file_path = data_dir / 'energy_bar_chart.json'
 
 with file_path.open("w") as outfile:
-    outfile.write(json.dumps(energy_bar_chart))
-
+    if(energy_bar_chart!=None):
+        outfile.write(json.dumps(energy_bar_chart))
+    else:
+        print("ERROR the energy_bar_chart data is NULL")
 # Define the path to the photovoltaic_device JSON file
 file_path = data_dir / 'photovoltaic_device.json'
 
 with file_path.open("w") as outfile:
-    outfile.write(json.dumps(photovoltaic_device))
-
+    if(photovoltaic_device!=None):
+        outfile.write(json.dumps(photovoltaic_device))
+    else:
+        print("ERROR the photovoltaic_device data is NULL")
 # Define the path to the wheater JSON file
 file_path = data_dir / 'wheater.json'
 
 with file_path.open("w") as outfile:
-    outfile.write(json.dumps(wheater))
-
+    if(wheater!=None):
+        outfile.write(json.dumps(wheater))
+    else:
+        print("ERROR the wheater data is NULL")
 # Define the path to the plant JSON file
 file_path = data_dir / 'plant.json'
 
 with file_path.open("w") as outfile:
-    outfile.write(json.dumps(plant))
+    if(plant!=None):
+        outfile.write(json.dumps(plant))
+    else:
+        print("ERROR the plant data is NULL")
