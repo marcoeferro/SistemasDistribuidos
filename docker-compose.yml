@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  etl-service:
+    build: ./etl-service
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./etl-service/dags:/opt/airflow/dags
+      - ./etl-service/scripts:/opt/airflow/scripts
+      - ./etl-service/config:/opt/airflow/config
+      - ./etl-service/data:/opt/airflow/data
+      - ./etl-service/logs:/opt/airflow/logs
+      - ./etl-service/plugins:/opt/airflow/plugins
+    command: webserver
+
+  airflow-scheduler:
+    build: ./etl-service
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    volumes:
+      - ./etl-service/dags:/opt/airflow/dags
+      - ./etl-service/scripts:/opt/airflow/scripts
+      - ./etl-service/config:/opt/airflow/config
+      - ./etl-service/data:/opt/airflow/data
+      - ./etl-service/logs:/opt/airflow/logs
+      - ./etl-service/plugins:/opt/airflow/plugins
+    command: scheduler
+
+  CRUD-service:
+    build: ./CRUD-service
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./CRUD-service:/app
