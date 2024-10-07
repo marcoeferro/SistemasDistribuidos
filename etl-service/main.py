@@ -62,7 +62,7 @@ data_dir = base_dir / 'data' / 'raw'
 data_dir.mkdir(parents=True, exist_ok=True)
 
 # Define the path to the batery_info JSON file
-file_path = data_dir / 'batery_info.json'
+file_path = data_dir / f'raw_batery_info{datetime.now().strftime("%Y_%m_%d_%H_%M_%S")}.json'
 
 with file_path.open("w") as outfile:
     if(batery_info!=None):
@@ -82,7 +82,7 @@ with file_path.open("w") as outfile:
         print("ERROR the batery_info data is NULL")
 
 # Define the path to the energy_area_chart JSON file
-file_path = data_dir / 'energy_area_chart.json'
+file_path = data_dir / f'raw_energy_area_chart{datetime.now().strftime("%Y_%m_%d_%H_%M_%S")}.json'
 
 with file_path.open("w") as outfile:
     if(energy_area_chart!=None):
@@ -109,7 +109,7 @@ with file_path.open("w") as outfile:
         print("ERROR the energy_area_chart data is NULL")
 
 # Define the path to the photovoltaic_device JSON file
-file_path = data_dir / 'photovoltaic_device.json'
+file_path = data_dir / f'raw_photovoltaic_device{datetime.now().strftime("%Y_%m_%d_%H_%M_%S")}.json'
 
 with file_path.open("w") as outfile:
     if(photovoltaic_device!=None):
@@ -143,7 +143,7 @@ with file_path.open("w") as outfile:
         print("ERROR the photovoltaic_device data is NULL")
 
 # Define the path to the plant_data JSON file
-file_path = data_dir / 'plant_data.json'
+file_path = data_dir / f'raw_plant_data{datetime.now().strftime("%Y_%m_%d_%H_%M_%S")}.json'
 
 with file_path.open("w") as outfile:
     if(plant_data!=None):
@@ -191,7 +191,7 @@ with file_path.open("w") as outfile:
         print("ERROR the plant_data data is NULL")
 
 # Define the path to the storage_status JSON file
-file_path = data_dir / 'storage_status.json'
+file_path = data_dir / f'raw_storage_status{datetime.now().strftime("%Y_%m_%d_%H_%M_%S")}.json'
 
 with file_path.open("w") as outfile:
     if(storage_status!=None):
@@ -226,7 +226,7 @@ with file_path.open("w") as outfile:
         print("ERROR the storage_status data is NULL")
 
 # Define the path to the storage_total JSON file
-file_path = data_dir / 'storage_total.json'
+file_path = data_dir / f'raw_storage_total{datetime.now().strftime("%Y_%m_%d_%H_%M_%S")}.json'
 
 with file_path.open("w") as outfile:
     if(storage_total!=None):
@@ -253,7 +253,7 @@ with file_path.open("w") as outfile:
 
 
 # Define the path to the wheater JSON file
-file_path = data_dir / 'wheater.json'
+file_path = data_dir / f'raw_wheater{datetime.now().strftime("%Y_%m_%d_%H_%M_%S")}.json'
 
 with file_path.open("w") as outfile:
     if(wheater!=None):
