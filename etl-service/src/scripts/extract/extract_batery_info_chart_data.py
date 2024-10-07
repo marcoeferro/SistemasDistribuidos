@@ -1,7 +1,7 @@
 import requests
 import json
 
-def get_data_batery_info_chart(session: requests, loginUrl: str) -> json:
+def get_batery_info_chart_data(session: requests, loginUrl: str) -> json:
     """
     Args: 
         requests: the login session 
