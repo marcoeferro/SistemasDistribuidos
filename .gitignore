@@ -10,3 +10,6 @@ data/
 
 #Ignore Database
 scrapped_data.db
+
+#ignore Notas
+notas.md
