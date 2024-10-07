@@ -1,7 +1,7 @@
 import requests
 import json
 
-def get_data_energy_chart(session: requests, loginUrl: str) -> json:
+def get_storage_total_data(session: requests, loginUrl: str) -> json:
     """
     Args: 
         requests: the login session 
@@ -9,7 +9,7 @@ def get_data_energy_chart(session: requests, loginUrl: str) -> json:
     Returns:
         json: the api response with the storage energy day chart 
     """
-    url = 'https://server.growatt.com/panel/storage/getStorageEnergyDayChart'
+    url = 'https://server.growatt.com/panel/storage/getStorageTotalData?plantId=2613959'
 
     headers ={
         "accept": "application/json, text/javascript, */*; q=0.01",
@@ -37,11 +37,11 @@ def get_data_energy_chart(session: requests, loginUrl: str) -> json:
         data=payload,
         headers=headers
     )
-
+    
     if (response.status_code == 200 ):
         try:
             return json.loads(response.text)
         except ValueError as e:
-            print(f"Deserealization - ERROR on energy bar chart data [ERROR : {e}]")
+            print(f"Deserealization - ERROR on discharging data [ERROR : {e}]")
     else:
-        print(f"RESPONSE ERROR on energy bar chart data request [RESPONSE CODE : {response.status_code}]")
+        print(f"RESPONSE ERROR on discharging data request [RESPONSE CODE : {response.status_code}]")
