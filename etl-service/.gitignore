@@ -1,9 +1,0 @@
-# Ignore Python bytecode
-../__pycache__/
-*.py[cod]
-
-# Ignore specific file
-fetch_example.py
-
-# Ignore all files inside the data folder
-data/
