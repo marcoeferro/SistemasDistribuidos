@@ -1,7 +1,7 @@
 import requests
 import json
 
-def get_data_wheater(session: requests, loginUrl: str) -> json:
+def get_wheater_data(session: requests, loginUrl: str) -> json:
     """
     Args: 
         requests: the login session 
