@@ -3,7 +3,7 @@ import sqlite3
 from pathlib import Path
 
 app = Flask(__name__)
-db_path = Path(__file__).parent /'..'/'scrapped_data.db'
+db_path = Path(__file__).parent/'..' /'scrapped_data.db'
 
 # Función para conectarse a la base de datos SQLite
 def get_db_connection():
@@ -158,4 +158,4 @@ def get_battery_soc_by_timestamp(timestamp):
     return jsonify(dict(battery_soc))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
