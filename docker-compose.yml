@@ -7,7 +7,7 @@ services:
     container_name: etl_service
     volumes:
       - ./etl-service/data:/usr/src/app/data # Monta la carpeta data en el contenedor
-      - ./scrapped_data:/usr/src/app # Monta la carpeta del servicio en el contenedor
+      - ./scrapped_data.db:/usr/src/app # Monta la carpeta del servicio en el contenedor
     environment:
       - TZ=America/Argentina/Buenos_Aires
     command: cron
@@ -17,6 +17,6 @@ services:
       context: ./CRUD-service # Ensure this path is correct
     container_name: crud_service
     volumes:
-      - ./scrapped_data:/usr/src/app/ # Ensure this mounts correctly
+      - ./scrapped_data.db:/usr/src/app/ # Ensure this mounts correctly
     environment:
       - TZ=America/Argentina/Buenos_Aires
