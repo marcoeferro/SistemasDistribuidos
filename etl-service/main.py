@@ -31,8 +31,8 @@ from src.scripts.load.loader_storage_status import create_storage_status_table, 
 from src.scripts.load.loader_storage_total_data import create_storage_total_table, insert_storage_total
 from src.scripts.load.loader_wheater import create_wheater_table,insert_wheater
 
-db_path = './scrapped_data.db'
-
+db_path = Path(__file__).parent /'..'/'scrapped_data.db'
+print(f"PATH {db_path}")
 conn = sqlite3.connect(db_path)
 
 loginUrl = "https://server.growatt.com/login"
