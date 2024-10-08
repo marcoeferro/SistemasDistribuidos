@@ -1,11 +1,13 @@
 from flask import Flask, jsonify, abort
 import sqlite3
+from pathlib import Path
 
 app = Flask(__name__)
+db_path = Path(__file__).parent /'..'/'scrapped_data.db'
 
 # Función para conectarse a la base de datos SQLite
 def get_db_connection():
-    conn = sqlite3.connect('./../scrapped_data.db')
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row  # Permite acceder a las filas como diccionarios
     return conn
 
@@ -156,4 +158,4 @@ def get_battery_soc_by_timestamp(timestamp):
     return jsonify(dict(battery_soc))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
