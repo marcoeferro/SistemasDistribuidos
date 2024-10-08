@@ -2,40 +2,24 @@ version: '3.8'
 
 services:
   etl-service:
-    build: ./etl-service
+    build:
+      context: ./etl-service # Ubicación del Dockerfile del ETL
+    container_name: etl_service
+    volumes:
+      - ./etl-service/data:/usr/src/app/data # Monta la carpeta data en el contenedor
+      - ./scrapped_data.db:/usr/src/app/scrapped_data.db # Mount the SQLite file to the container
     environment:
-      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
-      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
-      - AIRFLOW__CORE__LOAD_EXAMPLES=False
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./etl-service/dags:/opt/airflow/dags
-      - ./etl-service/scripts:/opt/airflow/scripts
-      - ./etl-service/config:/opt/airflow/config
-      - ./etl-service/data:/opt/airflow/data
-      - ./etl-service/logs:/opt/airflow/logs
-      - ./etl-service/plugins:/opt/airflow/plugins
-    command: webserver
+      - TZ=America/Argentina/Buenos_Aires
+    command: cron
 
-  airflow-scheduler:
-    build: ./etl-service
+  crud-service:
+    build:
+      context: ./CRUD-service # Ubicación del Dockerfile del CRUD
+    container_name: crud_service
+    volumes:
+      - ./scrapped_data.db:/usr/src/app/scrapped_data.db # Mount the SQLite file to the container
     environment:
-      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
-      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
-      - AIRFLOW__CORE__LOAD_EXAMPLES=False
-    volumes:
-      - ./etl-service/dags:/opt/airflow/dags
-      - ./etl-service/scripts:/opt/airflow/scripts
-      - ./etl-service/config:/opt/airflow/config
-      - ./etl-service/data:/opt/airflow/data
-      - ./etl-service/logs:/opt/airflow/logs
-      - ./etl-service/plugins:/opt/airflow/plugins
-    command: scheduler
-
-  CRUD-service:
-    build: ./CRUD-service
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./CRUD-service:/app
+      - TZ=America/Argentina/Buenos_Aires
+networks:
+  etl_network:
+    driver: bridge
