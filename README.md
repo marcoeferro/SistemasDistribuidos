@@ -111,7 +111,7 @@ python app.py
 luego de esto deberas entrar a la direccion que aparece en la consola y a los endpoints correspondientes
 
 ## Arquitectura del Proyecto
-`Discleimer` : el proycto como se describe en este readme aun no esta finalizado por lo que existen partes de esta arquietectura que no estan disponibles.
+`disclaimer` : el proycto como se describe en este readme aun no esta finalizado por lo que existen partes de esta arquietectura que no estan disponibles.
 El proyecto utiliza una arquitectura basada en microservicios, donde cada servicio (ETL, Scheduler, CRUD) está contenedorizado usando Docker. Kubernetes o Docker Compose pueden utilizarse para orquestar los contenedores y facilitar la comunicación entre los servicios.
 
 La arquitectura permite:
